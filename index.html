@@ -1,0 +1,602 @@
+<html><head>
+<style>
+.col2{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, max-content));
+    grid-template-rows: repeat(1, 100px);
+}
+.col4{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, max-content));
+    grid-template-rows: repeat(1, 240px);
+}
+
+.col4sub div{
+	height:24px;
+}
+
+.center {
+	position:relative;
+    margin: auto;
+	padding-right:30px;
+	padding-left:30px;
+	max-width: 1200px;
+    width: minmax(500px,1fr);
+}
+
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+	color:white;
+	padding-right:5px;
+	padding-left:5px;
+	height:25px;
+    display: inline-block;
+    text-decoration:none;
+}
+
+.topnav a:hover {
+	color:white;
+	padding-right:5px;
+	padding-left:5px;
+	height:25px;
+    display: inline-block;
+	border-bottom:3px solid white;
+}
+
+.active {
+	color:white;
+	padding-right:5px;
+	padding-left:5px;
+	height:25px;
+    display: inline-block;
+	border-bottom:3px solid white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+.arrow-right {
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  
+  border-left: 20px solid #448ccb;
+}
+.arrow-right:hover {
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  
+  border-left: 20px solid white;
+}
+
+.videohome div{
+	border:4px solid #448ccb;
+	background-color:white;
+}
+.videohome:hover div{
+	border:4px solid white;
+	background-color:#448ccb;
+}
+.videohome div .arrow-right{
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-left: 20px solid #448ccb;
+}
+.videohome:hover div .arrow-right{
+  width: 0; 
+  height: 0; 
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 20px solid transparent;
+  
+  border-left: 20px solid white;
+}
+
+
+.videohome a{
+	font-size:22pt;
+	color:#448ccb;
+}
+
+.videohome:hover a{
+	color:white;
+}
+.modelos {
+  width:80%;
+  margin:20px auto;
+  text-align: center;
+  padding:20px;
+  color:white;
+  .parent-slide{padding:15px;}
+  img{display: block;margin:auto;}
+}
+.modelos .slide{
+    text-indent: 10000%;
+    white-space: nowrap;
+  opacity:0.5;
+  float:left;
+  width:300px;
+}
+.modelos .slick-center{
+  text-indent: 0px;
+  opacity:1;
+  color:black;
+}
+
+
+.slider {
+  width:100%;
+  margin:20px auto;
+  text-align: center;
+  padding:20px;
+  color:white;
+  .parent-slide{padding:15px;}
+  img{display: block;margin:auto;}
+}
+
+.slider .slide{
+  float:left;
+}
+
+.slider .slide .title{
+  font-size:30pt
+  font-family:'montserrat';
+  font-weight:400;
+  color:white;
+}
+
+.slider .slide .subtitle{
+  font-size:15pt
+  font-family:'montserrat';
+  font-weight:200;
+  color:white;
+}
+
+.slider .slide .description{
+  font-size:12pt
+  font-family:'montserrat';
+  font-weight:400;
+  color:white;
+}
+
+.modelos .slide img{
+	margin:auto;
+}
+
+.modelos .slide .title{
+  font-size:50pt;
+  font-family:'montserrat';
+  font-weight:400;
+  color:#019cc8;
+}
+.modelos .slide .subtitle{
+  font-size:20pt;
+  font-family:'montserrat';
+  font-weight:200;
+  color:#00417c;
+}
+.modelos .slide .description{
+  font-size:12pt;
+  font-family:'montserrat';
+  font-weight:400;
+  color:#666666;
+}
+</style>
+<script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+<script>
+window.onload=function(){
+  $('.modelos').slick({
+  autoplay:true,
+  autoplaySpeed:1500,
+  centerMode: true,
+  arrows:true,
+  prevArrow:'<a class="slick-prev"><img src="slider/botao_l.png"></img></a>',
+  nextArrow:'<a class="slick-next"><img src="slider/botao_r.png"></img></a>',
+  swipe:false,
+  swipeToSlide:false,
+  slidesToShow:3,
+  slidesToScroll:1
+  });
+  
+  $('.modelos').on('afterChange', function(event, slick, currentSlide, nextSlide){
+    var dataId = $(slick.$slides[currentSlide]).data('index');  
+    $('.content').hide();
+    $('.content[data-id=' + dataId + ']').show();    
+	});
+	
+	$('.slider').slick({
+		dots:true
+	});
+};
+</script>
+
+<script src="jquery.min.js"></script>
+<script src="slick.min.js"></script>
+<style src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"></style>
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="slick.css"/>
+<link rel="stylesheet" type="text/css" href="slick-theme.css"/>
+</head>
+
+
+<body style="font-family:Montserrat;margin:0px; width:100%; overflow-x:hidden;">
+	<div style="background:#282b32;color:white">
+		<div class="center">
+			Atendimento<img style="vertical-align:middle" src="imgs/phone.png"> 
+			<a style="color:#38dcc1">0800 11 6491</a>
+			<img style="vertical-align:middle" src="imgs/mail.png">
+			<a style="color:#38dcc1">contato@microsom.com.br</a>
+			<a href="https://www.facebook.com/microsom/" style="float:right">
+			<img style="vertical-align:middle" src="imgs/face.png">
+			</a>
+		</div>
+	</div>
+
+	<div style="background:#1d1e6a;color:white;height:90px">
+		<div class="center">
+			<div class="topnav" style="float:right;padding-right:0px;padding-top:30px;font-weight:700;color:white">
+				<a href="index.html" style="border-bottom:3px solid white;">Home</a>
+				<a href="porque.html" style="">Porque Escolher a Microsom</a>
+				<a href="diferenciais.html" style="">Diferenciais</a>
+				<a href="noticias.html" style="">Noticias</a>
+				<a href="blog.html" style="">Blog</a>
+				<a href="duvidas.html" style="">Dúvidas</a>
+			</div>
+		</div>
+	</div>
+	<div class="center">
+		<img style="position:relative;top:-80px;margin-bottom:-160px;" src="imgs/logomain.png">
+	</div>
+	<div style="height:865;background-image: url('capahome.jpg');background-position: center top;background-repeat: no-repeat;background-size: cover;">
+	</div>
+	<div style="height:865;position:relative;top:-865px;margin-bottom:-865px">
+		<div class="videohome">
+			<a href="https://www.youtube.com/watch?v=fregObNcHC8&amp;start_radio=1&amp;list=RDfregObNcHC8" target="_blank" style="position:absolute; left:calc(50% + 250px); top:460px">
+				
+				<div style="height:80px; border-radius:15px;float:right; padding:5px; padding-left:25px; position:absolute; top:0px; left:40px; width:100px">
+					veja o<br>vídeo
+				</div>
+				<div style="height: 50px; width: 50px; border-radius: 50%; display: inline-block; position:absolute; top:20px;left:0px">
+					<table class="arrow-right" style="margin-left:20px; margin-top:5px"></table>
+				</div>
+			</a>
+		</div>
+	</div>
+	<div style="text-align:center">
+	<img src="imgs/BG_B.png">
+	</div>
+	<div style="position:relative;top:-170px;margin-bottom:-76px; text-align:center">
+		<a href="zumbido.html" style="text-decoration:none;">
+			<img src="imgs/b_zumbido.png">
+		</a>
+		<a href="audicao.html" style="text-decoration:none;">
+			<img src="imgs/b_audicao.png">
+		</a>
+		<a href="gagueira.html" style="text-decoration:none;">
+			<img src="imgs/b_gagueira.png">
+		</a>
+		<a href="apneia.html" style="text-decoration:none;">
+			<img src="imgs/b_apneia.png">
+		</a>
+	</div>
+	<div style="background-color:white; height:400px" class="center">
+		<div style="right:calc(50% + 30px); position:absolute; font-size:20pt; font-weight:600; top:130px; width:500px">
+			CONHEÇA MAIS SOBRE<br>O QUE PODEMOS FAZER POR VOCÊ
+		</div>
+		<div style="left:calc(50% + 30px); position:absolute; font-size:13pt; font-weight:600; top:130px; width:430px">
+			Cuidar da audição, fala e sono é ter de volta a<br> qualidade de vida e a interação com a familia e amigos.<br>Navegue no site ou procure uma de <a href="suming" style="color:#3366cc;text-decoration:none;">nossas lojas.</a>
+		</div>
+	</div>
+	<div style="width:100%; height:740;">
+		<div style="background-image:url('testeauditivo.jpg'); background-size:cover; height:740; width:50%; background-position:center;float:left;">
+		</div>
+		<div style="background-image:url('experiencias.jpg'); background-size:cover; height:740; width:50%; background-position:center;float:left">
+			<div style="max-width:98%; overflow:visible;">
+				<div class="slider " style="margin-top:250px; margin-left:-20px">
+					<div class="slide" style="width: 490px;">
+					<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
+					<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+					<br>
+					<br>
+					<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
+					<br>
+					<div class="description">Roberto Tadeu, 39 anos</div>
+					<br>
+				  </div>
+				  <div class="slide" style="width: 490px;">
+					<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
+					<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+					<br>
+					<br>
+					<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
+					<br>
+					<div class="description">Roberto Tadeu, 39 anos</div>
+					<br>
+				  </div>
+				  <div class="slide" style="width: 490px;">
+					<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
+					<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+					<br>
+					<br>
+					<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
+					<br>
+					<div class="description">Roberto Tadeu, 39 anos</div>
+					<br>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	<div style="width:100%; height:740; position:relative; background-image:url('bg_yt_temp.jpg'); background-size:cover; background-position:center;">
+		<div style=" height:740; width:50%; float:left;top:260px; position:relative;">
+			<div style="width:400px;margin:auto;">
+				<div style="font-size:35px;font-weight:800px;">QUER SABER MAIS<br>SOBRE A MICROSOM?</div>
+				<div style="font-size:20px;font-weight:800px;">Inscreva-se no nosso canal e assista a<br>conteúdos sobre saúde auditiva.</div>
+			</div>
+		</div>
+		<div style=" height:740; width:50%; float:left; position:relative;">
+			<div style="width:602px;margin:auto; position:relative;top:100px;">
+				<div style="width:600px;height:350px;background-color:#111111;position:relative;color:white;">Embed</div>
+				<br>
+				<div style="width:190px;height:115px;background-color:#111111;color:white;position:relative;top:20px;margin-right:15px;float:left;">Embed</div>
+				<div style="width:190px;height:115px;background-color:#111111;color:white;position:relative;top:20px;margin-right:15px;float:left;">Embed</div>
+				<div style="width:190px;height:115px;background-color:#111111;color:white;position:relative;top:20px;float:left;">Embed</div>
+			</div>
+		</div>
+	</div>
+	
+	<div style="width:100%; overflow:hidden;">
+	<br><br>
+	<div class="modelos">
+  <div class="slide">
+    <div class="title">IIC Invisibel</div>
+	<br/>
+    <img src="slider/1_invisivel_invisibel_invisible.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Totalmente invisível!</div>
+	<br/>
+    <div class="description">O Menor aparelho do Mercado.</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">Microcanal</div>
+	<br/>
+    <img src="slider/2_microcanal_semiinvisivel_semi_invisivel.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Minúsculo, Imperceptível</div>
+	<br/>
+    <div class="description">O segundo menor aparelho.</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">Intra-Canal</div>
+	<br/>
+    <img src="slider/3_intra_canal.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Pequeno e Ajustável</div>
+	<br/>
+    <div class="description">Para quem quer ser discreto</div>
+	<div class="description">enquanto mantém o controle.</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">Classic</div>
+	<br/>
+    <img src="slider/4_classic.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Clássico, Discreto</div>
+	<br/>
+    <div class="description">Controle de volume giratorio.</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">BTE 312</div>
+	<br/>
+    <img src="slider/5_bte_13_a2_a3_a4_start.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Moderno e Pequeno </div>
+	<br/>
+    <div class="description">Controle completo.</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">Mini BTE 312 </div>
+	<br/>
+    <img src="slider/6_bte_mini_13_a2_a3_a4_start.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Pequeno e Muito Discreto</div>
+	<br/>
+    <div class="description">Todos os recursos</div>
+	<div class="description">sem abrir mão da estética.</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">A3I</div>
+	<br/>
+    <img src="slider/7_a3i_smartphone_celular_wireless.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Smart, Wireless</div>
+	<br/>
+    <div class="description">Conecte com seu smartphone</div>
+	<div class="description">e redescubra sua audição.</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">Tinnitus</div>
+	<br/>
+    <img src="slider/8_tinnitus_zumbido.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Potente e Confortável</div>
+	<br/>
+    <div class="description">Alívio da sensação de Zumbido.</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">A4 ZPOWER</div>
+	<br/>
+    <img src="slider/9_a4_iqr_recarregavel_bateria_micro_ric_zpower.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Discreto e Confiável</div>
+	<br/>
+    <div class="description">20% a mais de carga</div>
+	<div class="description">que não te deixa na mão</div>
+	<br/>
+  </div>
+  <div class="slide">
+    <div class="title">Acessorios</div>
+	<br/>
+    <img src="slider/10_acessorios_testador_pilha_bombinha_surflink_desumidificador.jpg" alt="" class="img-responsive" />
+	<br/><br/>
+    <div class="subtitle">Tudo o que Precisa</div>
+	<br/>
+    <div class="description">Uma série de itens</div>
+	<div class="description">para facilitar a sua vida.</div>
+	<br/>
+  </div>
+	</div></div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	<a class="slick-prev" style="display: inline;"><img src="slider/botao_l.png"></a><a class="slick-next" style="display: inline;"><img src="slider/botao_r.png"></a></div>
+	</div>
+	
+	
+	<div style="background-image:url('tempfaixa.jpg');background-position:center;background-size:cover;width:100%;height:890px;">
+	</div>
+	
+	<div style="position:relative;width:100%;height:1740px; overflow:hidden;">
+	<div style="background-color:white; height:400px;" class="center">
+		<div style="position:absolute; top:400px;right:calc(50% + 30px); width:500px">
+			<div style=" font-size:20pt; font-weight:600;">
+				TESTE GRATUITO
+			</div>
+			<div style="font-size:13pt; font-weight:600; width:430px">
+				A Microsom oferece um Teste<br>gratuito da solução tecnológica<br>que juntos pensamos ser a mais<br>adequada para o seu perfil.<br>
+			</div>
+		</div>
+		<div style="color:white; position:absolute; top:130px;left:calc(50% - 100px); width:500px;background-color:#0f0c45;background-image:url('bg_graph.png');border-radius:25px;height:1740;width:calc(50% + 300px)">
+			<img style="position:absolute; top:100px; left:70px;border-radius:20px" src="imgs/mockup.jpg">
+			<div style="position:absolute; top:980px; left:190px; background-color:#0f0c45; border-radius:10px; width:350px;height:250px;padding:35px;">
+				<div style="font-size:40pt">Notícias</div>
+				<div style="height:50px;position:relative;top:10px;">Fique por dentro das notícias microsom:</div>
+				<div><img style="vertical-align:middle; margin-right:10px;" src="imgs/ico_check.png"></img> Novas Tecnologias</div>
+				<div><img style="vertical-align:middle" src="imgs/ico_check.png"></img> Adaptação Infantil</div>
+				<div><img style="vertical-align:middle" src="imgs/ico_check.png"></img> Acessórios</div>
+				<div><img style="vertical-align:middle" src="imgs/ico_check.png"></img> Tendencias de Mercado</div>
+			</div>
+		</div>
+		<div style="position:absolute; top:1000px;right:calc(50% - 20px);border-radius:20px;width:600px;height:600px;text-align:center;overflow:hidden;">
+			<img style="height:600px" src="imgs/turma_microsom.jpg">
+		</div>
+	</div>
+	</div>
+	
+	
+	<br>
+	<div class="col4" style="background-color:#1b4279; padding:60px;color:white;">
+		<div class="col4sub" style="padding:15px;">
+				<div style="font-size:20px">A Microsom</div>
+				<div style="width:100%;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+				<br>
+				<br>
+				<div><a href=".html" style="color:white;text-decoration:none;">A Empresa</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Histórico</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Tecnologia</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Diferenciais</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Na Midia</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Endereços</a></div>
+		</div>
+		<div class="col4sub" style="padding:15px;">
+				<div style="font-size:20px">Saiba + Sobre</div>
+				<div style="width:100%;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+				<br>
+				<br>
+				<div><a href=".html" style="color:white;text-decoration:none;">Audição</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Zumbido</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Gagueira</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Apneia</a></div>
+		</div>
+		<div class="col4sub" style="padding:15px;">
+				<div style="font-size:20px">Aparelhos</div>
+				<div style="width:100%;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+				<br>
+				<br>
+				<div><a href=".html" style="color:white;text-decoration:none;">Soluções para audição</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Soluções para zumbido</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Soluções para gagueira</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Soluções para apneia</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Equipamentos para o profissional</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Acessorios</a></div>
+		</div>
+		<div class="col4sub" style="padding:15px;">
+				<div style="font-size:20px">Atendimento</div>
+				<div style="width:100%;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+				<br>
+				<br>
+				<div><a href=".html" style="color:white;text-decoration:none;">Mande sua mensagem</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Atendimento Domiciliar</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">A Microsom Liga pra Você</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Envie seu Curriculo</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Seja um Representante</a></div>
+				<div><a href=".html" style="color:white;text-decoration:none;">Conte sua Experiência</a></div>
+		</div>
+	</div>
+	<div style="background-color:#1b4279;width:100%;height:120px;text-align:center;color:white">
+		<div style="width:80%;border-bottom:3px solid #102e59;margin:auto;height:10px;"></div>
+		<br/>Matriz - Rua Francisco Marengo 941 - Tatuapé - São Paulo - SP - contato@microsom.com.br - Tel.: 11 2789 2400<br/><br/>Copyright 2017 :: Microsom - Soluções em Aparelhos Auditivos, Gagueira e Zumbido :: Todos os direitos reservados ::
+	</div>
+
+
+</body></html>
