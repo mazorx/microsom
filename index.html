@@ -213,6 +213,31 @@
   font-weight:400;
   color:#666666;
 }
+
+.slick-dots {
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	padding: 1rem 0;
+	list-style-type: none;
+}
+
+.slick-dots li{
+	width:20px;
+	height:20px;
+	background-color:white;
+	border-radius:50%;
+}
+
+.slick-dots .slick-active{
+	width:20px;
+	height:20px;
+	background-color:#31526d;
+	border-radius:50%;
+	color:white;
+	text-decoration:none;
+}
+
 </style>
 <script>
 function myFunction() {
@@ -246,7 +271,10 @@ window.onload=function(){
 	});
 	
 	$('.slider').slick({
-		dots:true
+		infinite: true,
+	dots: true,
+	autoplay: true,
+	autoplaySpeed: 2000
 	});
 };
 </script>
@@ -333,44 +361,45 @@ window.onload=function(){
 		<div style="background-image:url('testeauditivo.jpg'); background-size:cover; height:740; width:50%; background-position:center;float:left;">
 		</div>
 		<div style="background-image:url('experiencias.jpg'); background-size:cover; height:740; width:50%; background-position:center;float:left">
+			
 			<div style="max-width:98%; overflow:visible;">
-				<div class="slider " style="margin-top:250px; margin-left:-20px">
-					<div class="slide" style="width: 490px;">
-					<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
-					<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
-					<br>
-					<br>
-					<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
-					<br>
-					<div class="description">Roberto Tadeu, 39 anos</div>
-					<br>
-				  </div>
-				  <div class="slide" style="width: 490px;">
-					<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
-					<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
-					<br>
-					<br>
-					<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
-					<br>
-					<div class="description">Roberto Tadeu, 39 anos</div>
-					<br>
-				  </div>
-				  <div class="slide" style="width: 490px;">
-					<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
-					<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
-					<br>
-					<br>
-					<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
-					<br>
-					<div class="description">Roberto Tadeu, 39 anos</div>
-					<br>
-				  </div>
+			
+				<div class="slider" style="margin-top:250px; width:80%">
+					
+					<div class="slide" style="width: 490px; float:left; height:200px">
+						<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
+						<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+						<br>
+						<br>
+						<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
+						<br>
+						<div class="description">Roberto Tadeu, 39 anos</div>
+						<br>
+					</div>
+					<div class="slide" style="width: 490px; float:left; height:200px">
+						<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
+						<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+						<br>
+						<br>
+						<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
+						<br>
+						<div class="description">Roberto Tadeu, 39 anos</div>
+						<br>
+					</div>
+					<div class="slide" style="width: 490px; float:left; height:200px">
+						<div class="title" style="font-size:20px">EXPERIÊNCIAS</div>
+						<div style="width:120px;border-bottom:3px solid white;margin:auto;height:10px;"></div>
+						<br>
+						<br>
+						<div class="subtitle"> "A Microsom representa pra mim qualidade <br> de vida, para nós que gaguejamos"</div>
+						<br>
+						<div class="description">Roberto Tadeu, 39 anos</div>
+						<br>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
 	
 	
 	<div style="width:100%; height:740; position:relative; background-image:url('bg_yt_temp.jpg'); background-size:cover; background-position:center;">
